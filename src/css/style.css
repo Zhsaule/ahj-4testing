@@ -1,0 +1,108 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+  display: block;
+  margin: 8px;
+}
+
+div {
+  display: block;
+}
+
+.cards {
+  margin: 10px 0;
+  height: 25px;
+}
+    
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+    
+.cards li {
+  display: block;
+  float: left;
+}
+    
+.card.mir {
+  background-image: url(../img/card-mir.gif);
+}
+
+.card.visa {
+  background-image: url(../img/card-visa.gif);
+}
+
+.card.master {
+  background-image: url(../img/card-mastercard.gif);
+}
+
+.card.amex {
+  background-image: url(../img/card-amex.gif);
+}
+
+.card.discover {
+  background-image: url(../img/card-discover.gif);
+}
+
+.card.jcb {
+  background-image: url(../img/card-jcb.gif);
+}
+
+.card.diners_club {
+  background-image: url(../img/card-diners.gif);
+}
+
+.card.cdisabled {
+  background-position: 0 -25px;
+  opacity: .3;
+}
+
+.card {
+  float: left;
+  width: 39px;
+  height: 25px;
+  text-indent: -9999px;
+  background-position: 0 0;
+  margin-right: 4px;
+}
+    
+.form-control {
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+
+.input {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;    
+}
+
+button {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}

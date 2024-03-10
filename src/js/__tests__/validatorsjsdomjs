@@ -1,0 +1,46 @@
+import { TextEncoder } from 'util';
+global.TextEncoder = TextEncoder;
+import { JSDOM } from 'jsdom';
+import CardFormWidget from '../widget';
+
+describe('CardFormWidget', () => {
+  let dom;
+  let container;
+
+  beforeAll(() => {
+    dom = new JSDOM('<!DOCTYPE html><div id="app"></div>', { runScripts: 'dangerously' });
+    container = dom.window.document.body;
+  });
+
+  jest.each([
+    ['4111111111111111', true], // Валидный номер Visa
+    ['378282246310005', true], // Валидный номер American Express
+    ['1234567890123456', false], // Невалидный номер
+    ['5555555555554444', true], // Валидный номер Mastercard
+  ])('проверка номера карты %s (валидный: %s)', (cardNumber, isValid) => {
+    test(`должен быть ${isValid ? 'валидный' : 'невалидный'}`, () => {
+      global.document = dom.window.document;
+      global.window = dom.window;
+
+      const widget = new CardFormWidget(container);
+      widget.bindToDOM();
+
+      const input = dom.window.document.querySelector(CardFormWidget.inputSelector);
+      const submitButton = dom.window.document.querySelector(CardFormWidget.submitSelector);
+      const icon = dom.window.document.querySelector(CardFormWidget.iconSelector);
+
+      input.value = cardNumber;
+      submitButton.click();
+
+      if (isValid) {
+        expect(input.classList.contains('valid')).toBe(true);
+        expect(icon.textContent).toBe('Ok');
+        expect(icon.style.color).toBe('green');
+      } else {
+        expect(input.classList.contains('valid')).toBe(false);
+        expect(icon.textContent).toBe('Error');
+        expect(icon.style.color).toBe('red');
+      }
+    });
+  });
+});
